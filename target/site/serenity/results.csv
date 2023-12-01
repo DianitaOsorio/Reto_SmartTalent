@@ -1,0 +1,6 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Iniciar sesión para programar una cita","Usuario inicia sesión y programa una cita","PENDING","2023-11-29T14:24:34.8058916-05:00[America/Bogota]","0.0","0.54"
+"Iniciar sesión para programar una cita","El usuario inicia sesion y programa una cita","PENDING","2023-11-29T15:20:49.7971707-05:00[America/Bogota]","0.0","0.63"
+"Sign in to schedule an appointment","The user logs in and schedules an appointment","SUCCESS","2023-12-01T10:15:26.8552342-05:00[America/Bogota]","0.0","14.77"
+"Sign in to schedule an appointment","The user logs in and schedules an appointment","PENDING","2023-11-30T18:20:23.3340853-05:00[America/Bogota]","0.0","22.18"
+"fill out the form fields","the user is on the page","ERROR","2023-12-01T10:44:31.486202-05:00[America/Bogota]","0.0","17.9"

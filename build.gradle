@@ -1,0 +1,63 @@
+group 'Proyect'
+version '1.0'
+apply plugin: 'java-library'
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
+
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+def versionSerenity='3.9.8'
+def versionHealeniumWeb='3.4.4'
+def versionCucumber='3.9.8'
+def versionApachePoi='5.2.2'
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "net.serenity-bdd:serenity-gradle-plugin:${gradlePlugin}"
+    }
+}
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+dependencies {
+    implementation "net.serenity-bdd:serenity-core:${versionSerenity}"
+    implementation "net.serenity-bdd:serenity-junit:${versionSerenity}"
+    implementation "net.serenity-bdd:serenity-screenplay:${versionSerenity}"
+    implementation "net.serenity-bdd:serenity-cucumber:${versionSerenity}"
+    implementation "org.assertj:assertj-core:${versionSerenity}"
+    implementation "org.apache.poi:poi:${poi}"
+    implementation "org.apache.poi:poi-ooxml:${poi}"
+    implementation "net.serenity-bdd:serenity-ensure:${Ensure}"
+    testImplementation("io.github.bonigarcia:webdrivermanager:${bonigarcia}")
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.0-alpha5'
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.0-alpha5'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.18.0'
+
+}
+
+
+test {
+    useJUnit {
+        include "**/*";
+        gradle.startParameter.continueOnFailure = true
+        testLogging.showStandardStreams = true
+        systemProperties System.getProperties()
+        systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
+    }
+    finalizedBy 'aggregate'
+}
